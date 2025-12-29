@@ -1,9 +1,27 @@
-.login-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-  background-image: url('./login-bg.png');
+:root {
+  font-family: 'Archivo', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --brand-primary: #1f1b4d;
+  --brand-primary-hover: #2b2768;
+
+  --text-title: #111827;
+  --text-body: #374151;
+  --text-muted: #6b7280;
+
+  --border: #e5e7eb;
+  --bg-page: #f8f9fb;
+  --bg-card: #ffffff;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+}
+
+body {
+  margin: 0;
 }

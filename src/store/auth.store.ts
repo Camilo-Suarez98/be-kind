@@ -1,9 +1,16 @@
 import { create } from "zustand";
 
-export const useAuthStore = create((set) => ({
+interface AuthStore {
+  token: string | null;
+  loading: boolean;
+  login: (token: string) => void;
+  logout: () => void;
+}
+
+export const useAuthStore = create<AuthStore>((set) => ({
   token: localStorage.getItem('token'),
-  laoding: false,
-  login: (token: string) => {
+  loading: false,
+  login: (token) => {
     localStorage.setItem('token', token);
     set({ token });
   },
