@@ -1,18 +1,21 @@
-const BASE_HEADERS = {
-  'Content-Type': 'application/json'
-};
-
 export async function http<T>(
   url: string,
   options: RequestInit = {}
 ): Promise<T> {
   const token = localStorage.getItem('token');
+
+  const headers: Record<string, string> = {
+    ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    ...(options.headers as Record<string, string>),
+  };
+
+  if (!(options.body instanceof FormData)) {
+    headers['Content-Type'] = 'application/json';
+  }
+
   const response = await fetch(url, {
     ...options,
-    headers: {
-      ...BASE_HEADERS,
-      ...(token && { Authorization: `Bearer ${token}` })
-    },
+    headers,
   });
 
   if (!response.ok) {
