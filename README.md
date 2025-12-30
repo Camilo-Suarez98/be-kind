@@ -1,24 +1,38 @@
 # 📦 Dashboard de Categorías – Prueba Técnica Frontend
 
-Este proyecto corresponde a una prueba técnica de Frontend, cuyo objetivo es construir un dashboard administrativo para la gestión de categorías, cumpliendo con buenas prácticas de arquitectura, estado global, control de acceso y QA funcional.
+Este proyecto hace parte de una prueba técnica de Frontend cuyo objetivo es construir un dashboard administrativo para la gestión de categorías.
 
 ---
 
-## 🛠️ Tecnologías utilizadas
+## 🛠️ Tecnologías y librerías utilizadas
 
-- React + TypeScript
-- Zustand (manejo de estado global)
-- React Hook Form
-- Fetch API
-- CSS Modules
-- React Router DOM
+- **React + TypeScript**  
+  Tipado estático para mejorar la mantenibilidad y prevenir errores.
+
+- **Zustand**  
+  Para el manejo de estado global.
+
+- **React Hook Form**  
+  Manejo de formularios con validaciones.
+
+- **Fetch API**  
+  Consumo de endpoints HTTP.
+
+- **React Router DOM**  
+  Manejo de rutas.
+
+- **CSS Modules**  
+  Encapsulación de estilos por componente.
+
+- **React Icons**  
+  Uso de iconos.
 
 ---
 
 ## 🔐 Autenticación y rutas protegidas
 
-El dashboard se encuentra protegido mediante un sistema de **rutas privadas**.  
-Solo los usuarios autenticados pueden acceder a las vistas administrativas.
+El dashboard está protegido mediante un sistema de **rutas privadas**.  
+El acceso a las vistas administrativas solo está permitido a usuarios autenticados mediante el token almacenado en localStorage.
 
 ### Escenario: acceso no autorizado al dashboard
 
@@ -27,55 +41,63 @@ El usuario **NO ha iniciado sesión** (token inexistente o eliminado).
 
 **Pasos:**
 1. Abrir el navegador.
-2. Acceder manualmente a la URL:
-`http://localhost:5173/dashboard`
+2. Acceder a la URL:
+`/dashboard`
+
 
 **Resultado esperado:**
 - El usuario es redirigido automáticamente a la pantalla de **login**.
 - No se renderiza ningún componente del dashboard.
 - No se realizan peticiones a endpoints protegidos del API.
 
-Este comportamiento asegura que la información sensible no sea accesible sin autenticación.
-
 ---
 
 ## 📋 Funcionalidades principales
 
 - Login de usuario
-- Protección de rutas privadas
+- Protección de rutas
 - Listado de categorías
-- Paginación
+- Paginación dinámica (10, 20, 50)
 - Ordenamiento por columnas
 - Búsqueda en frontend
 - Creación de categorías mediante modal
 - Subida de imagen (icono)
 - Estados activo / inactivo
-- Diseño responsive
 
 ---
 
 ## 🧪 QA Funcional
 
-El proyecto incluye el archivo **`QA_CHECKLIST.md`**, el cual contiene pruebas funcionales del flujo completo:
+Se incluye el archivo **`QA_CHECKLIST.md`**, el cual contiene al menos 10 pruebas funcionales del flujo completo:
 
 - Login
 - Acceso a rutas protegidas
 - Listado de categorías
 - Paginación
+- Búsqueda
 - Creación de categorías
-- Manejo de estados vacíos y errores
+- Manejo de errores
+- Estados vacíos
 
 ---
 
-## ⚠️ Ambigüedad intencional del API
+## 🧠 Decisiones técnicas
 
-El API no documenta explícitamente el payload requerido para la creación de categorías.  
-Para resolver esta ambigüedad:
+- El estado global de categorías se manejó en Zustand para facilitar la paginación y el refresco del listado.
+- La búsqueda se implementó en frontend debido a que el endpoint no soporta query de búsqueda.
+- La paginación se sincroniza entre UI y API utilizando `pageNumber` y `pageSize`.
 
-- Se inspeccionó la estructura de la respuesta del endpoint de listado.
-- Se realizaron pruebas directas al endpoint de creación.
-- Se implementó la subida de archivos cuando fue requerida.
-- Las decisiones técnicas fueron documentadas en este README y reflejadas en la implementación.
+---
+
+## 📌 Supuestos asumidos
+
+- El token de autenticación se almacena en `localStorage`.
+- Un usuario sin token no debe realizar llamadas a endpoints protegidos.
+- El backend controla la paginación y devuelve `totalElements` y `totalPages`.
+- El campo `status` representa:
+- `1` → Activo
+- `0` → Inactivo
+- El campo `icon` corresponde a una URL devuelta por el API luego del upload.
 
 ---
 
