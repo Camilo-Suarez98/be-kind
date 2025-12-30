@@ -20,5 +20,11 @@ export async function http<T>(
     throw error;
   }
 
-  return response.json();
+  const contentType = response.headers.get('content-type');
+  if (contentType && contentType.includes('application/json')) {
+    return response.json();
+  } else {
+    // Si la respuesta es texto plano (como un token), devolverlo como string
+    return response.text() as Promise<T>;
+  }
 };

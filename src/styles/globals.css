@@ -5,21 +5,6 @@
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  --brand-primary: #1f1b4d;
-  --brand-primary-hover: #2b2768;
-
-  --text-title: #111827;
-  --text-body: #374151;
-  --text-muted: #6b7280;
-
-  --border: #e5e7eb;
-  --bg-page: #f8f9fb;
-  --bg-card: #ffffff;
-
-  --radius-sm: 6px;
-  --radius-md: 12px;
 }
 
 body {

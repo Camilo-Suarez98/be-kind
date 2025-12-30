@@ -4,26 +4,33 @@ import { useForm } from "react-hook-form";
 import { http } from "../../api/http";
 import styles from "./Login.module.css";
 import { MdOutlineMailOutline, MdLockOutline } from "react-icons/md";
+import { FaEyeSlash, FaEye } from "react-icons/fa";
+import { useState } from "react";
 
 interface LoginProps {
-  email: string;
+  username: string;
   password: string;
 }
 
 export const Login = () => {
-  const { register, handleSubmit } = useForm<LoginProps>();
+  const { register, handleSubmit, watch } = useForm<LoginProps>();
   const login = useAuthStore((state) => state.login);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const username = watch('username');
+  const password = watch('password');
+  const isFormValid = username && password && username.trim() !== '' && password.trim() !== '';
 
   const onSubmit = async (data: LoginProps) => {
     try {
-      const res = await http<{ token: string }>(
+      const token = await http<string>(
         'https://dev.apinetbo.bekindnetwork.com/api/Authentication/Login',
         {
           method: 'POST',
           body: JSON.stringify(data),
         }
       );
-      login(res.token);
+      login(token);
     } catch (error) {
       throw new Error(`The following error occurred: ${error}`);
     }
@@ -35,19 +42,33 @@ export const Login = () => {
         <img src="./login-logo.png" alt="Be kind logo" />
         <h2>¡Empieza a conectar tu comunidad ante buenas acciones!</h2>
         <form onSubmit={handleSubmit(onSubmit)} className={styles.loginForm}>
-          <label htmlFor="email">Correo electrónico*</label>
+          <label htmlFor="username">Correo electrónico*</label>
           <div className={styles.loginInputBox}>
             <MdOutlineMailOutline className={styles.loginIcon} />
-            <input {...register('email', { required: true })} />
+            <input {...register('username', { required: true })} autoComplete="on" placeholder="Ingresar correo" />
           </div>
           <label htmlFor="password" className={styles.loginLabelPassword}>Contraseña*</label>
           <div className={styles.loginInputBox}>
             <MdLockOutline className={styles.loginIcon} />
-            <input {...register('password', { required: true })} />
+            <input
+              type={showPassword ? "text" : "password"}
+              {...register('password', { required: true })}
+              autoComplete="on"
+              placeholder="Ingresa tu contraseña"
+            />
+            <button
+              type="button"
+              className={styles.togglePasswordButton}
+              onClick={() => setShowPassword(!showPassword)}
+              aria-label={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
+            >
+              {showPassword ? <FaEyeSlash size={16} /> : <FaEye size={16} />}
+            </button>
           </div>
-          <button type="submit">Iniciar sesión</button>
+          <a href="#" className={styles.recoveryPassword}>Recuperar contraseña</a>
+          <button type="submit" className={styles.loginButton} disabled={!isFormValid}>Iniciar sesión</button>
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
