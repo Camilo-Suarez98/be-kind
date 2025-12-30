@@ -1,0 +1,65 @@
+.sidebar {
+  grid-row: 2;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav button {
+  background: transparent;
+  border: none;
+}
+
+.item {
+  padding: 10px 12px;
+  text-align: left;
+  color: #28272A;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.item:hover {
+  background-color: #EAFFFF;
+}
+
+.icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.active {
+  background-color: #EAFFFF !important;
+  color: #28272A;
+  border-left: 4px solid #01BABB !important;
+}
+
+.logout {
+  margin-top: auto;
+  margin-bottom: 24px;
+  color: #28272A;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  text-align: center;
+  background: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}

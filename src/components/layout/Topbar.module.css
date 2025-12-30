@@ -1,0 +1,19 @@
+.topbar {
+  grid-column: 1 / -1;
+  height: 64px;
+  background-color: #1E1B4D;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  background-color: #facc15;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 600;
+}

@@ -6,6 +6,7 @@ import styles from "./Login.module.css";
 import { MdOutlineMailOutline, MdLockOutline } from "react-icons/md";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface LoginProps {
   username: string;
@@ -15,6 +16,7 @@ interface LoginProps {
 export const Login = () => {
   const { register, handleSubmit, watch } = useForm<LoginProps>();
   const login = useAuthStore((state) => state.login);
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
   const username = watch('username');
@@ -31,6 +33,7 @@ export const Login = () => {
         }
       );
       login(token);
+      navigate('/dashboard');
     } catch (error) {
       throw new Error(`The following error occurred: ${error}`);
     }

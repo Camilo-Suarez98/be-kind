@@ -1,0 +1,13 @@
+.layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: 64px 1fr;
+  height: 100vh;
+}
+
+.content {
+  grid-column: 2;
+  grid-row: 2;
+  padding: 32px;
+  background-color: var(--bg-page);
+}
