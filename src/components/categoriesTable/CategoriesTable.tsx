@@ -4,7 +4,8 @@ import { FaSort, FaSortUp, FaSortDown } from "react-icons/fa";
 import { MdOutlineEdit, MdOutlineDelete, MdOutlineVisibility } from "react-icons/md";
 import { HiOutlineChevronDoubleLeft, HiOutlineChevronDoubleRight, HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
 import { useCategoriesStore } from '../../store/categories.store';
-import type { Category } from '../../store/categories.store';
+import { type Category } from '../../store/categories.store';
+import { formatDate } from '../../utils/formatDate';
 
 export const CategoriesTable = ({ search }: { search?: string }) => {
   const [sortConfig, setSortConfig] = useState<{ key: keyof Category, direction: 'asc' | 'desc' } | null>(null);
@@ -107,7 +108,7 @@ export const CategoriesTable = ({ search }: { search?: string }) => {
                     </span>
                   </td>
                   <td>{item.description}</td>
-                  <td>{item.createdAt}</td>
+                  <td>{formatDate(item.createdAt)}</td>
                   <td>
                     <button className={styles.actionButton}>
                       <MdOutlineEdit />
