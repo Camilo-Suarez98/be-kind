@@ -1,7 +1,7 @@
 .topbar {
   grid-column: 1 / -1;
   height: 64px;
-  background-color: #1E1B4D;
+  background-color: var(--brand-primary);
   display: flex;
   align-items: center;
   justify-content: space-between;

@@ -11,3 +11,173 @@
   padding: 32px;
   background-color: var(--bg-page);
 }
+
+.dashboardTitle {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 44px;
+}
+
+.tabs {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.tabs button {
+  cursor: pointer;
+  background: none;
+  padding-bottom: 8px;
+  border: none;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.tabs .active {
+  border: none;
+  border-bottom: 2px solid var(--brand-primary);
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.searchContainer {
+  display: flex;
+  gap: 16px;
+}
+
+.searchContainer .filterButton {
+  background-color: transparent;
+  color: var(--brand-primary);
+  display: flex;
+  place-items: center;
+  border: none;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.search input {
+  padding: 8px;
+  padding-left: 32px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  border-radius: 6px;
+  border: 1px solid var(--brand-secondary);
+}
+
+.search svg {
+  position: absolute;
+  left: 8px;
+}
+
+.buttonToCreate {
+  background-color: var(--brand-primary);
+  color: white;
+  border-radius: 6px;
+  font-size: 16px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .layout {
+    grid-template-columns: 200px 1fr;
+  }
+
+  .content {
+    padding: 24px;
+  }
+
+  .dashboardTitle {
+    font-size: 30px;
+    line-height: 38px;
+  }
+
+  .tabs {
+    gap: 16px;
+  }
+
+  .actions {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: 64px 1fr;
+  }
+
+  .content {
+    grid-column: 1;
+    padding: 16px;
+  }
+
+  .dashboardTitle {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .tabs {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .searchContainer {
+    width: 100%;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .search {
+    width: 100%;
+  }
+
+  .search input {
+    width: 100%;
+  }
+
+  .buttonToCreate {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboardTitle {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .tabs button {
+    font-size: 14px;
+  }
+
+  .search input {
+    font-size: 13px;
+  }
+
+  .buttonToCreate {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

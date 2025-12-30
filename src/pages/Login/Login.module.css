@@ -56,14 +56,14 @@
   width: 100%;
   overflow: hidden;
   color: #28272A;
-  border: 1px solid #8F8D93;
+  border: 1px solid var(--brand-secondary);
   border-radius: 8px;
   padding: 12px 35px 12px 35px;
   box-sizing: border-box;
 }
 
 .loginForm input::placeholder {
-  color: #8F8D93;
+  color: var(--brand-secondary);
 }
 
 .loginForm .loginInputBox .loginIcon {
@@ -82,7 +82,7 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  color: #8F8D93;
+  color: var(--brand-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,7 +91,7 @@
 }
 
 .togglePasswordButton:hover {
-  color: #1940B2;
+  color: var(--brand-primary);
 }
 
 .loginForm .recoveryPassword {
@@ -102,13 +102,13 @@
   background-color: transparent;
   margin-top: 16px;
   text-decoration: none;
-  border-bottom: 2px solid #1E1B4D;
-  color: #1E1B4D;
+  border-bottom: 2px solid var(--brand-primary);
+  color: var(--brand-primary);
 }
 
 .loginForm .loginButton {
   margin-top: 24px;
-  background-color: #1E1B4D;
+  background-color: var(--brand-primary);
   color: #FFFFFF;
   font-weight: 500;
   width: 260px;
