@@ -1,74 +1,86 @@
-# React + TypeScript + Vite
+# 📦 Dashboard de Categorías – Prueba Técnica Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto corresponde a una prueba técnica de Frontend, cuyo objetivo es construir un dashboard administrativo para la gestión de categorías, cumpliendo con buenas prácticas de arquitectura, estado global, control de acceso y QA funcional.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Tecnologías utilizadas
 
-## React Compiler
+- React + TypeScript
+- Zustand (manejo de estado global)
+- React Hook Form
+- Fetch API
+- CSS Modules
+- React Router DOM
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🔐 Autenticación y rutas protegidas
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+El dashboard se encuentra protegido mediante un sistema de **rutas privadas**.  
+Solo los usuarios autenticados pueden acceder a las vistas administrativas.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Escenario: acceso no autorizado al dashboard
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+**Precondición:**  
+El usuario **NO ha iniciado sesión** (token inexistente o eliminado).
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+**Pasos:**
+1. Abrir el navegador.
+2. Acceder manualmente a la URL:
+`http://localhost:5173/dashboard`
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+**Resultado esperado:**
+- El usuario es redirigido automáticamente a la pantalla de **login**.
+- No se renderiza ningún componente del dashboard.
+- No se realizan peticiones a endpoints protegidos del API.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Este comportamiento asegura que la información sensible no sea accesible sin autenticación.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-# be-kind
+---
+
+## 📋 Funcionalidades principales
+
+- Login de usuario
+- Protección de rutas privadas
+- Listado de categorías
+- Paginación
+- Ordenamiento por columnas
+- Búsqueda en frontend
+- Creación de categorías mediante modal
+- Subida de imagen (icono)
+- Estados activo / inactivo
+- Diseño responsive
+
+---
+
+## 🧪 QA Funcional
+
+El proyecto incluye el archivo **`QA_CHECKLIST.md`**, el cual contiene pruebas funcionales del flujo completo:
+
+- Login
+- Acceso a rutas protegidas
+- Listado de categorías
+- Paginación
+- Creación de categorías
+- Manejo de estados vacíos y errores
+
+---
+
+## ⚠️ Ambigüedad intencional del API
+
+El API no documenta explícitamente el payload requerido para la creación de categorías.  
+Para resolver esta ambigüedad:
+
+- Se inspeccionó la estructura de la respuesta del endpoint de listado.
+- Se realizaron pruebas directas al endpoint de creación.
+- Se implementó la subida de archivos cuando fue requerida.
+- Las decisiones técnicas fueron documentadas en este README y reflejadas en la implementación.
+
+---
+
+## ▶️ Ejecución del proyecto
+
+```bash
+npm install
+npm run dev
