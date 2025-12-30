@@ -9,6 +9,8 @@ import {
   MdOutlineLogout
 } from 'react-icons/md';
 import { FaHandHoldingHeart, FaMedal } from 'react-icons/fa';
+import { useAuthStore } from '../../store/auth.store';
+import { useNavigate } from 'react-router-dom';
 
 const items = [
   { name: 'Home', icon: MdHome },
@@ -22,6 +24,13 @@ const items = [
 ];
 
 export const Sidebar = () => {
+  const logout = useAuthStore((state) => state.logout);
+  const navigate = useNavigate();
+
+  const onLogout = () => {
+    logout();
+    navigate('/');
+  };
   return (
     <aside className={styles.sidebar}>
       <img src="/logo-sidebar.png" className={styles.logo} />
@@ -42,7 +51,7 @@ export const Sidebar = () => {
         })}
       </nav>
 
-      <button className={styles.logout}>
+      <button className={styles.logout} onClick={onLogout}>
         <MdOutlineLogout />
         Cerrar sesión
       </button>
