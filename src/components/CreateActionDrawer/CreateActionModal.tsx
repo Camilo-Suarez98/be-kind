@@ -8,7 +8,7 @@ interface FormValues {
   color: string;
 }
 
-export function CreateActionDrawer({ onClose }: { onClose: () => void }) {
+export function CreateActionModal({ onClose }: { onClose: () => void }) {
   const { register, handleSubmit } = useForm<FormValues>();
   const fetchActions = useActionsStore((s) => s.fetchActions);
 
@@ -36,4 +36,4 @@ export function CreateActionDrawer({ onClose }: { onClose: () => void }) {
       <button type="submit">Crear</button>
     </form>
   );
-}
+};
