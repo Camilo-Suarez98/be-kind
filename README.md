@@ -4,6 +4,18 @@ Este proyecto hace parte de una prueba técnica de Frontend cuyo objetivo es con
 
 ---
 
+
+## ▶️ Instalación y ejecución del proyecto
+
+```bash
+git clone https://github.com/Camilo-Suarez98/be-kind.git
+cd be-kind
+npm install
+npm run dev
+```
+
+---
+
 ## 🛠️ Tecnologías y librerías utilizadas
 
 - **React + TypeScript**  
@@ -98,11 +110,3 @@ Se incluye el archivo **`QA_CHECKLIST.md`**, el cual contiene al menos 10 prueba
 - `1` → Activo
 - `0` → Inactivo
 - El campo `icon` corresponde a una URL devuelta por el API luego del upload.
-
----
-
-## ▶️ Ejecución del proyecto
-
-```bash
-npm install
-npm run dev
