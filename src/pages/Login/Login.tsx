@@ -48,7 +48,11 @@ export const Login = () => {
           <label htmlFor="username">Correo electrónico*</label>
           <div className={styles.loginInputBox}>
             <MdOutlineMailOutline className={styles.loginIcon} />
-            <input {...register('username', { required: true })} autoComplete="on" placeholder="Ingresar correo" />
+            <input
+              {...register('username', { required: true })}
+              autoComplete="on"
+              placeholder="a.berrio@yopmail.com"
+            />
           </div>
           <label htmlFor="password" className={styles.loginLabelPassword}>Contraseña*</label>
           <div className={styles.loginInputBox}>
@@ -57,7 +61,7 @@ export const Login = () => {
               type={showPassword ? "text" : "password"}
               {...register('password', { required: true })}
               autoComplete="on"
-              placeholder="Ingresa tu contraseña"
+              placeholder="AmuFK8G4Bh64Q1uX+IxQhw=="
             />
             <button
               type="button"
